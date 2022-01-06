@@ -20,6 +20,8 @@ self.addEventListener('fetch', (event) => {
   event.respondWith(
     caches.match(event.request).then((response) => {
       // if the requested asset is cached, return cached response
+      console.log('responding from cache', event.request, response);
+      console.log(caches.keys());
       if (response) {
         return response
       }
