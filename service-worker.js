@@ -1,9 +1,9 @@
-const CACHE_NAME = 'pwa-workshop-cache-v2'; // bump this version when you make changes.
+const CACHE_NAME = 'pwa-workshop-cache-v3'; // bump this version when you make changes.
 
 const URLS_TO_CACHE = [
-  'index.html',
-  'logo-192.png',
-  'app.js',
+  './index.html',
+  './logo-192.png',
+  './app.js',
 ]
 
 
