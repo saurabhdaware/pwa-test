@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="manifest" href="./app.webmanifest" />
+  <meta name="theme-color" content="#f30">
+  <title>PWA Example</title>
+</head>
+<body>
+  <h1>PWA Example</h1>
+  <p class="dynamic-text">This is a PWA Example</p>
+
+  <script>
+    async function registerServiceWorker() {
+      try {
+        const registration = await navigator.serviceWorker.register('./service-worker.js');
+        console.log('Service Worker Registration Successful with scope', registration.scope);
+      } catch (err) {
+        console.log('Service Worker Registration Failed');
+      }
+    }
+
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function() {
+        registerServiceWorker();
+      });
+    }
+  </script>
+  <script src="./app.js"></script>
+</body>
+</html>

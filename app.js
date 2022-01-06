@@ -1,0 +1,1 @@
+document.querySelector('p.dynamic-text').innerHTML = 'I am from p!!';
