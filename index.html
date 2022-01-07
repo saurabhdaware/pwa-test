@@ -11,6 +11,7 @@
 <body>
   <h1>PWA Example</h1>
   <p class="dynamic-text">This is a PWA Example</p>
+  <button class="show-noti">noti</button>
 
   <script>
     async function registerServiceWorker() {
@@ -21,6 +22,32 @@
         console.log('Service Worker Registration Failed');
       }
     }
+
+
+    function displayNotification() {
+      if (Notification.permission == 'granted') {
+        console.log('hereeee');
+        navigator.serviceWorker.getRegistration().then(function(reg) {
+          var options = {
+            body: 'Here is a notification body!',
+            icon: './logo-192.png',
+            vibrate: [100, 50, 100],
+            data: {
+              dateOfArrival: Date.now(),
+              primaryKey: 1
+            }
+          };
+          reg.showNotification('Hello world!', options);
+        }).catch((err) => console.log(err));
+      }
+    }
+    document.querySelector('.show-noti').addEventListener('click', () => {
+      displayNotification();
+    })
+
+    Notification.requestPermission(function(status) {
+      console.log('Notification permission status:', status);
+    });
 
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', function() {
